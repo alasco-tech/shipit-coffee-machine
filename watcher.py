@@ -65,12 +65,12 @@ if __name__ == "__main__":
     while True:
         power_consumption = get_current_power_consumption()
 
-        _logger.info("Using %r watts", power_consumption)
+        _logger.warning("Using %r watts", power_consumption)
         if power_consumption > 10:
             time_since_last_use = _dt.datetime.now() - time_of_last_use
 
             if time_since_last_use > _dt.timedelta(minutes=10):
-                _logger.info("SOMEONE IS MAKING COFFEE")
+                _logger.warning("SOMEONE IS MAKING COFFEE")
 
                 image_filename = _picture.take_picture()
                 _notify.post_it(message=image_filename)
