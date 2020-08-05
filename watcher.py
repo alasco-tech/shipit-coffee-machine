@@ -3,6 +3,11 @@ import subprocess as _subprocess
 import json as _json
 import decimal as _decimal
 import datetime as _dt
+import logging as _logging
+import time as _time
+
+
+_logger = _logging.getLogger(__name__)
 
 
 def query_sem6000_status() -> dict:
@@ -33,7 +38,12 @@ def query_sem6000_status() -> dict:
     }
     """
     process = _subprocess.Popen(
-        ["/home/pi/voltcraft-sem-6000/sem-6000.exp coffee_grinder", "--status --json"],
+        [
+            "/home/pi/voltcraft-sem-6000/sem-6000.exp",
+            "coffee_grinder",
+            "--status",
+            "--json",
+        ],
         stdout=_subprocess.PIPE,
         stderr=_subprocess.PIPE,
     )
@@ -54,6 +64,7 @@ if __name__ == "__main__":
     while True:
         power_consumption = get_current_power_consumption()
 
+        _logger.info("Using %r watts", power_consumption)
         if power_consumption > 10:
             time_since_last_use = _dt.datetime.now() - time_of_last_use
 
@@ -63,3 +74,5 @@ if __name__ == "__main__":
                 pass
 
             time_of_last_use = _dt.datetime.now()
+
+        _time.sleep(1)
