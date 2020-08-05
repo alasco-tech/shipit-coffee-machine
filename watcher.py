@@ -1,3 +1,4 @@
+#! /usr/bin/env python3
 import subprocess as _subprocess
 import json as _json
 import decimal as _decimal
