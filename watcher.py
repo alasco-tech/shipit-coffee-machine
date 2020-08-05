@@ -27,7 +27,6 @@ if __name__ == "__main__":
                 _logger.warning("SOMEONE IS MAKING COFFEE")
 
                 image_filename = _picture.take_picture()
-                print(image_filename)
                 _notify.post_image(filename=image_filename)
 
             time_of_last_use = _dt.datetime.now()
