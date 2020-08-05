@@ -6,7 +6,7 @@ import datetime as _dt
 import logging as _logging
 import time as _time
 
-import datadog as _datadog
+import datadog_client as _datadog
 from util import notify as _notify, picture as _picture
 
 _logger = _logging.getLogger(__name__)
