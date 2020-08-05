@@ -6,6 +6,7 @@ import datetime as _dt
 import logging as _logging
 import time as _time
 
+from . import notify as _notify, picture as _picture
 
 _logger = _logging.getLogger(__name__)
 
@@ -69,9 +70,12 @@ if __name__ == "__main__":
             time_since_last_use = _dt.datetime.now() - time_of_last_use
 
             if time_since_last_use > _dt.timedelta(minutes=10):
-                # TODO make picture
-                # TODO post to slack
-                pass
+                _logger.info("SOMEONE IS MAKING COFFEE")
+
+                image_filename = _picture.take_picture()
+                _notify.post_it(message=image_filename)
+
+
 
             time_of_last_use = _dt.datetime.now()
 
