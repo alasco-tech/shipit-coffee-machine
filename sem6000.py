@@ -42,7 +42,7 @@ def query_sem6000_status() -> dict:
     stdout, stderr = process.communicate()
 
     if "Connection failed" in str(stderr):
-        _subprocess.Popen(["sudo reboot"])
+        _subprocess.Popen(["sudo", "reboot"])
 
     return _json.loads(stdout)
 
