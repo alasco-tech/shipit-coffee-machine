@@ -15,6 +15,7 @@ _logger = _logging.getLogger(__name__)
 if __name__ == "__main__":
 
     time_of_last_use = _dt.datetime(1970, 1, 1)
+    grinding = False
 
     while True:
         power_consumption = _sem6000.get_current_power_consumption()
@@ -29,7 +30,13 @@ if __name__ == "__main__":
                 image_filename = _picture.take_picture()
                 _notify.post_image(filename=image_filename)
 
+            if not grinding and time_since_last_use > _dt.timedelta(seconds=5):
+                _datadog.increment_coffee_counter()
+
+            grinding = True
             time_of_last_use = _dt.datetime.now()
+        else:
+            grinding = False
 
         _datadog.post_watt_usage(power_consumption)
         _time.sleep(1)

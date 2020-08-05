@@ -12,11 +12,7 @@ def _get_datadog_secrets():
     return api_key
 
 
-def post_watt_usage(
-    watts: Union[float, int, str], metric_name: str = "coffeegrinder.watts.usage"
-):
-    """ Post watts usage to datadog with given metric name """
-
+def _prepare_dd_client():
     dd_api_key = _get_datadog_secrets()
 
     options = {
@@ -26,4 +22,17 @@ def post_watt_usage(
     }
     _datadog.initialize(**options)
 
-    _datadog.api.Metric.send(metric=metric_name, points=watts)
+
+def increment_coffee_counter(metric_name: str = "coffeegrinder.coffee.count"):
+    _prepare_dd_client()
+    _datadog.api.Metric.send(
+        metric=metric_name, attach_host_name=False, points=1, type="count"
+    )
+
+
+def post_watt_usage(
+    watts: Union[float, int, str], metric_name: str = "coffeegrinder.watts.usage"
+):
+    """ Post watts usage to datadog with given metric name """
+    _prepare_dd_client()
+    _datadog.api.Metric.send(metric=metric_name, attach_host_name=False, points=watts)
