@@ -70,15 +70,15 @@ def post_it(
     """ Post `message` with given `header` to slack """
     blocks = _fill_message_template(header, message)
     client = _slack_client()
-    client.chat_postMessage(channel=channel, blocks=blocks)
+    return client.chat_postMessage(channel=channel, blocks=blocks)
 
 def post_image(
-    filename: str ="/home/pi/pictures/2020-08-05 14:23:47.631515.jpg",
+    filename: str,
     message: str = "Somebody is brewing delicious hot coffee! ☕",
     channel: str = "shipit-coffee-machine"
 ):
     client = _slack_client()
-    client.files_upload(
+    return client.files_upload(
         file=filename,
         initial_comment=message,
         channels=channel
@@ -94,6 +94,4 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    response = post_image()
-    print(response)
-    # post_it(header=args.header, message=args.message)
+    post_it(header=args.header, message=args.message)
