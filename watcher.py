@@ -7,9 +7,7 @@ import logging as _logging
 import time as _time
 
 import datadog as _datadog
-import notify as _notify
-import picture as _picture
-
+from util import notify as _notify, picture as _picture
 
 _logger = _logging.getLogger(__name__)
 
@@ -68,12 +66,12 @@ if __name__ == "__main__":
     while True:
         power_consumption = get_current_power_consumption()
 
-        _logger.info("Using %r watts", power_consumption)
+        _logger.warning("Using %r watts", power_consumption)
         if power_consumption > 10:
             time_since_last_use = _dt.datetime.now() - time_of_last_use
 
             if time_since_last_use > _dt.timedelta(minutes=10):
-                _logger.info("SOMEONE IS MAKING COFFEE")
+                _logger.warning("SOMEONE IS MAKING COFFEE")
 
                 image_filename = _picture.take_picture()
                 _notify.post_it(message=image_filename)

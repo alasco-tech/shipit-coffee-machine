@@ -1,13 +1,9 @@
-from typing import TYPE_CHECKING
+from typing import Union
 
 import configparser as _configparser
 import time as _time
 
 import requests as _requests
-
-
-if TYPE_CHECKING:
-    from decimal import Decimal
 
 
 def _get_datadog_secrets():
@@ -18,7 +14,9 @@ def _get_datadog_secrets():
     return api_key
 
 
-def post_watt_usage(watts: "Decimal", metric_name: str = "coffee_grinder_watt_usage"):
+def post_watt_usage(
+    watts: Union[float, int, str], metric_name: str = "coffee_grinder_watt_usage"
+):
     """ Post watts usage to datadog with given metric name """
     dd_api_key = _get_datadog_secrets()
     now = _time.time()
