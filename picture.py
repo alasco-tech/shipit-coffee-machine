@@ -1,3 +1,4 @@
+#! /usr/bin/env python3
 import picamera as _picamera
 import datetime as _dt
 
