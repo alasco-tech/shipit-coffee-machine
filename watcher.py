@@ -6,7 +6,7 @@ import datetime as _dt
 import logging as _logging
 import time as _time
 
-from . import slack as _slack, picture as _picture
+from . import notify as _notify, picture as _picture
 
 _logger = _logging.getLogger(__name__)
 
@@ -73,7 +73,7 @@ if __name__ == "__main__":
                 _logger.info("SOMEONE IS MAKING COFFEE")
 
                 image_filename = _picture.take_picture()
-                _slack.post_it(message=image_filename)
+                _notify.post_it(message=image_filename)
 
 
 
