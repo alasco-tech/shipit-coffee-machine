@@ -23,7 +23,7 @@ if __name__ == "__main__":
         if power_consumption > 10:
             time_since_last_use = _dt.datetime.now() - time_of_last_use
 
-            if time_since_last_use > _dt.timedelta(minutes=10):
+            if time_since_last_use > _dt.timedelta(minutes=5):
                 _logger.warning("SOMEONE IS MAKING COFFEE")
 
                 image_filename = _picture.take_picture()
