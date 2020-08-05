@@ -72,6 +72,17 @@ def post_it(
     client = _slack_client()
     client.chat_postMessage(channel=channel, blocks=blocks)
 
+def post_image(
+    filename: str,
+    message: str = "Somebody is brewing delicious hot coffee! ☕",
+    channel: str = "shipit-coffee-machine"
+):
+    client = _slack_client()
+    client.files_upload(
+        file=filename,
+        initial_comment=message,
+        channels=channel
+    )
 
 if __name__ == "__main__":
     # execute only if run as a script
