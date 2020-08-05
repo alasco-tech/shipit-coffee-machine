@@ -73,7 +73,7 @@ def post_it(
     client.chat_postMessage(channel=channel, blocks=blocks)
 
 def post_image(
-    filename: str,
+    filename: str ="/home/pi/pictures/2020-08-05 14:23:47.631515.jpg",
     message: str = "Somebody is brewing delicious hot coffee! ☕",
     channel: str = "shipit-coffee-machine"
 ):
@@ -93,4 +93,7 @@ if __name__ == "__main__":
     parser.add_argument("--message", type=str)
 
     args = parser.parse_args()
-    post_it(header=args.header, message=args.message)
+
+    response = post_image()
+    print(response)
+    # post_it(header=args.header, message=args.message)
