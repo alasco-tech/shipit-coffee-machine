@@ -2,7 +2,7 @@
 Description=Coffee watcher service
 
 [Service]
-ExecStart=/home/pi/shipit-coffee-machine/watcher.py
+ExecStart=/home/pi/shipit-coffee-machine/start_watcher.sh
 
 [Install]
 WantedBy=multi-user.target
