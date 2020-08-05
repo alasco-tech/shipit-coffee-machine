@@ -41,10 +41,13 @@ def query_sem6000_status() -> dict:
     )
     stdout, stderr = process.communicate()
 
-    if "Connection failed" in str(stderr):
-        _subprocess.Popen(["sudo", "reboot"])
+    # if "Connection failed" in str(stderr):
+    #     _subprocess.Popen(["sudo", "reboot"])
 
-    return _json.loads(stdout)
+    try:
+        return _json.loads(stdout)
+    except _json.decoder.JSONDecodeError:
+        return {}
 
 
 def get_current_power_consumption() -> float:
