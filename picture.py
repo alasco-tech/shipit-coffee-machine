@@ -9,7 +9,7 @@ if not _os.path.exists(PICTURE_FOLDER):
     _os.makedirs(PICTURE_FOLDER)
 
 camera = _picamera.PiCamera()
-# camera.rotation = 180
+camera.rotation = 90
 
 def take_picture() -> str:
     """ takes a picture, stores it locally and returns the filepath """
