@@ -65,7 +65,7 @@ def _slack_client() -> _slack.WebClient:
 def post_it(
     header: str = "Somebody is brewing delicious hot coffee! ☕",
     message: Optional[str] = None,
-    channel: str = "shipit-coffee-machine",
+    channel: str = "zufällig"
 ):
     """ Post `message` with given `header` to slack """
     blocks = _fill_message_template(header, message)
@@ -75,7 +75,7 @@ def post_it(
 def post_image(
     filename: str,
     message: str = "Somebody is brewing delicious hot coffee! ☕",
-    channel: str = "shipit-coffee-machine"
+    channel: str = "zufällig"
 ):
     client = _slack_client()
     return client.files_upload(
