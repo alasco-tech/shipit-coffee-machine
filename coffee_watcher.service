@@ -1,0 +1,8 @@
+[Unit]
+Description=Coffee watcher service
+
+[Service]
+ExecStart=/home/pi/shipit-coffee-machine/watcher.py
+
+[Install]
+WantedBy=multi-user.target
