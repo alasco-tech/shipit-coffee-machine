@@ -6,7 +6,10 @@ import datetime as _dt
 import logging as _logging
 import time as _time
 
-from . import notify as _notify, picture as _picture
+import datadog as _datadog
+import notify as _notify
+import picture as _picture
+
 
 _logger = _logging.getLogger(__name__)
 
@@ -75,8 +78,7 @@ if __name__ == "__main__":
                 image_filename = _picture.take_picture()
                 _notify.post_it(message=image_filename)
 
-
-
             time_of_last_use = _dt.datetime.now()
 
+        _datadog.post_watt_usage(power_consumption)
         _time.sleep(1)
