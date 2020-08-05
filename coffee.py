@@ -7,11 +7,10 @@ Requires `slackclient` python-library
 from typing import List, Optional
 
 import argparse as _argparse
+import configparser as _configparser
 import logging as _logging
 
 _logger = _logging.getLogger(__name__)
-
-_BOT_TOKEN = "$slack_token_goes_here"
 
 try:
     import slack as _slack
@@ -52,8 +51,15 @@ def _fill_message_template(header: str, message: Optional[str] = None) -> List[d
     return blocks
 
 
+def _get_token() -> str:
+    parser = _configparser.ConfigParser()
+    parser.read("config.ini")
+    return parser["DEFAULT"]["slack_token"]
+
+
 def _slack_client() -> _slack.WebClient:
-    return _slack.WebClient(token=_BOT_TOKEN)
+    bot_token = _get_token()
+    return _slack.WebClient(token=bot_token)
 
 
 def post_it(
