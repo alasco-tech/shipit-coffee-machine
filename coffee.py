@@ -1,3 +1,4 @@
+#! /usr/bin/env python3
 """
 Post coffee messages to slack!
 

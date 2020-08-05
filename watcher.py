@@ -31,9 +31,11 @@ def query_sem6000_status() -> dict:
       ]
     }
     """
-    process = _subprocess.Popen(['/home/pi/voltcraft-sem-6000/sem-6000.exp coffee_grinder', '--status --json'],
-                         stdout=_subprocess.PIPE,
-                         stderr=_subprocess.PIPE)
+    process = _subprocess.Popen(
+        ["/home/pi/voltcraft-sem-6000/sem-6000.exp coffee_grinder", "--status --json"],
+        stdout=_subprocess.PIPE,
+        stderr=_subprocess.PIPE,
+    )
     stdout, stderr = process.communicate()
     return _json.loads(stdout)
 
@@ -46,7 +48,7 @@ def get_current_power_consumption() -> _decimal.Decimal:
 
 if __name__ == "__main__":
 
-    time_of_last_use = _dt.datetime(1970,1,1)
+    time_of_last_use = _dt.datetime(1970, 1, 1)
 
     while True:
         power_consumption = get_current_power_consumption()
@@ -57,5 +59,6 @@ if __name__ == "__main__":
             if time_since_last_use > _dt.timedelta(minutes=10):
                 # TODO make picture
                 # TODO post to slack
+                pass
 
             time_of_last_use = _dt.datetime.now()
