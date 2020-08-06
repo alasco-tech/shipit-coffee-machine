@@ -6,6 +6,8 @@ ExecStart=/home/pi/shipit-coffee-machine/start_watcher.sh
 User=pi
 WorkingDirectory=/home/pi/shipit-coffee-machine/
 ExecStartPre=/bin/sleep 5
+Restart=on-failure
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
