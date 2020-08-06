@@ -1,7 +1,7 @@
 # alasco-barista
 
 Our hardware setup to monitor our espresso machine and let people know when there's fresh delicious coffee being brewed!
-This is an outcome of one of our quarterly [Ship-It days](https://alasco.tech/2019/07/02/shipit-day-recap.html).
+This is an outcome of one of our quarterly [ShipIt days](https://alasco.tech/2019/07/02/shipit-day-recap.html).
 
 
 ## Overview
