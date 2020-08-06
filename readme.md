@@ -1,7 +1,9 @@
 # Alasco Coffee Watcher
 
-Hardware setup to watch our espresso machine and let people know when there's fresh delicious coffee being brewed!
+Our hardware setup to watch our espresso machine and let people know when there's fresh delicious coffee being brewed! This is a project of one of our quarterly [Ship-It days](https://alasco.tech/2019/07/02/shipit-day-recap.html).
 
+
+## Overview
 In times of distancing, we take the following precaution around our espresso machine: 
 If you use the machine, wear a face mask and gloves, 
 announce it to the #random channel and serve espresso (via an espresso table) 
@@ -12,7 +14,7 @@ To smoothen this process, the coffee grinder automatically posts to slack when c
 
 We also include a snap photo of the person preparing the espresso, to make the slack post more engaging and fun.
 
-## Overview
+## Hardware setup
 We use a [Voltcraft SEM6000](https://www.conrad.de/de/p/voltcraft-sem6000-energiekosten-messgeraet-bluetooth-schnittstelle-datenexport-datenloggerfunktion-trms-stromtarif-e-1558906.html) smart power plug to monitor power consumption of the coffee grinder. 
 Detecting use via power consumption has the advantage of not interfering with the cleaning process of the coffee machine.
 The Voltcraft SEM6000 is an easy to use device, because somebody make a very nice shell script to contrrol it from a Linux machine.
