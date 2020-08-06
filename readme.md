@@ -1,14 +1,14 @@
 # alasco-barista
 
 Our hardware setup to monitor our espresso machine and let people know when there's fresh delicious coffee being brewed!
-This is a project of one of our quarterly [Ship-It days](https://alasco.tech/2019/07/02/shipit-day-recap.html).
+This is an outcome of one of our quarterly [Ship-It days](https://alasco.tech/2019/07/02/shipit-day-recap.html).
 
 
 ## Overview
 In times of social distancing, we adopted the following rule around our espresso machine: 
 If you use the machine, wear a face mask and gloves, 
 announce it to the #random channel and serve espresso (via an espresso table) 
-— for everyone showing up in response to the slack notification.
+— for everyone showing up.
 
 To smoothen this process, the coffee grinder automatically triggers a slack message when coffee is about to be prepared:
 
