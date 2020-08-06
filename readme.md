@@ -11,6 +11,7 @@ announce it to the #random channel and serve espresso (via an espresso table)
 
 To smoothen this process, the coffee grinder automatically posts to slack when coffee is about to be prepared:
 
+![Coffee Process Visualization](coffee_process.png)
 
 We also include a snap photo of the person preparing the espresso, to make the slack post more engaging and fun.
 
