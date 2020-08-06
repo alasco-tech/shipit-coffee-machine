@@ -1,6 +1,7 @@
 # Alasco Coffee Watcher
 
-Our hardware setup to watch our espresso machine and let people know when there's fresh delicious coffee being brewed! This is a project of one of our quarterly [Ship-It days](https://alasco.tech/2019/07/02/shipit-day-recap.html).
+Our hardware setup to watch our espresso machine and let people know when there's fresh delicious coffee being brewed!
+This is a project of one of our quarterly [Ship-It days](https://alasco.tech/2019/07/02/shipit-day-recap.html).
 
 
 ## Overview
@@ -15,15 +16,20 @@ To smoothen this process, the coffee grinder automatically posts to slack when c
 
 We also include a snap photo of the person preparing the espresso, to make the slack post more engaging and fun.
 
-## Hardware setup
+## Hardware Setup
 We use a [Voltcraft SEM6000](https://www.conrad.de/de/p/voltcraft-sem6000-energiekosten-messgeraet-bluetooth-schnittstelle-datenexport-datenloggerfunktion-trms-stromtarif-e-1558906.html) smart power plug to monitor power consumption of the coffee grinder. 
 Detecting use via power consumption has the advantage of not interfering with the cleaning process of the coffee machine.
-The Voltcraft SEM6000 is an easy to use device, because somebody make a very nice shell script to contrrol it from a Linux machine.
+The Voltcraft SEM6000 is an easy to use device, because [somebody make a very nice shell script to control it from a Linux machine](https://github.com/Heckie75/voltcraft-sem-6000).
 
 A [Raspberry Pi](https://www.raspberrypi.org/) monitors the real time power consumption reported by the smart plug and to detect power spikes.
 When detecting usage it takes a picture via the [Pi Camera Module](https://www.raspberrypi.org/products/camera-module-v2/) 
 and posts the picture to slack, along with a message.
 It additionally counts the number of espressi made and reports it to [Datadog](https://www.datadoghq.com/) for monitoring.
+
+## Software Setup
+Starting from a vanilla RasPi OS installation, set up SSH and wifi credentials for headless usage.
+Check out this repository along with [https://github.com/Heckie75/voltcraft-sem-6000](https://github.com/Heckie75/voltcraft-sem-6000) in the `/home/pi` and follow the [bluetooth plug setup instructions](https://github.com/Heckie75/voltcraft-sem-6000).
+Link the [service file](coffee_watcher.service) to `/etc/systemd/system/` and use `systemctl enable coffee_watcher` to start the script on boot.
 
 ## Slack Bot
 Make sure to follow the tutorial of the official python [slackclient](https://github.com/slackapi/python-slackclient) to set up a slack bot that will be allowed to post on your behalf. The created credentials are needed in the `config.ini`!
