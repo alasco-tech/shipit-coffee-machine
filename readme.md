@@ -14,7 +14,7 @@ To smoothen this process, the coffee grinder automatically triggers a slack mess
 
 ![Coffee Process Visualization](coffee_process.png)
 
-We also include a of the person preparing the espresso, to make the slack post engaging and fun.
+We also include a picture of the person preparing the espresso, to make the slack post engaging and fun.
 
 ## Hardware Setup
 We use a [Voltcraft SEM6000](https://www.conrad.de/de/p/voltcraft-sem6000-energiekosten-messgeraet-bluetooth-schnittstelle-datenexport-datenloggerfunktion-trms-stromtarif-e-1558906.html) smart power plug to monitor the real-time power consumption of the coffee grinder. 
