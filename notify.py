@@ -76,7 +76,7 @@ def post_it(
 def post_image(
     filename: str,
     message: str = "Somebody is brewing delicious hot coffee! ☕",
-    channel: str = "zufällig",
+    channel: str = "barista",
 ):
     client = _slack_client()
     return client.files_upload(file=filename, initial_comment=message, channels=channel)
