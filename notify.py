@@ -65,24 +65,22 @@ def _slack_client() -> _slack.WebClient:
 def post_it(
     header: str = "Somebody is brewing delicious hot coffee! ☕",
     message: Optional[str] = None,
-    channel: str = "zufällig"
+    channel: str = "barista",
 ):
     """ Post `message` with given `header` to slack """
     blocks = _fill_message_template(header, message)
     client = _slack_client()
     return client.chat_postMessage(channel=channel, blocks=blocks)
 
+
 def post_image(
     filename: str,
     message: str = "Somebody is brewing delicious hot coffee! ☕",
-    channel: str = "zufällig"
+    channel: str = "zufällig",
 ):
     client = _slack_client()
-    return client.files_upload(
-        file=filename,
-        initial_comment=message,
-        channels=channel
-    )
+    return client.files_upload(file=filename, initial_comment=message, channels=channel)
+
 
 if __name__ == "__main__":
     # execute only if run as a script
